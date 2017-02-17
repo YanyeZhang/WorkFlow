@@ -1,3 +1,3 @@
 # WorkFlow
 a demo of workflow 
-the desgin from node.js Express
+the design from node.js Express
