@@ -1,6 +1,14 @@
-package com.yanye.zhang.worlfowdemo;
+package com.yanye.zhang.worlfowdemo.ads;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
+
+import com.yanye.zhang.worlfowdemo.FinishCallback;
+import com.yanye.zhang.worlfowdemo.Middleware;
+import com.yanye.zhang.worlfowdemo.NullFinishCallback;
+import com.yanye.zhang.worlfowdemo.WFNext;
+import com.yanye.zhang.worlfowdemo.Workflow;
+import com.yanye.zhang.worlfowdemo.ads.data.AdsReport;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +19,7 @@ import java.util.Map;
  * Description:
  */
 
-public class HBWorkflowManager implements Workflow, WFNext {
+public class AdsWorkflowManager implements Workflow<AdsReport>, WFNext {
 
     private static final boolean EXECUTE_REQUEST = true;
     private static final boolean EXECUTE_REPONSE = false;
@@ -19,11 +27,11 @@ public class HBWorkflowManager implements Workflow, WFNext {
     private boolean mExecuteType;
     private int mIndex = 0;
     private int mSize = 0;
-    private Map mReports;
-    private Map mContext;
+    private AdsReport mReports;
     private List<Middleware> mMiddlewares;
+    private Context mContext;
 
-    public HBWorkflowManager() {
+    public AdsWorkflowManager() {
         mExecuteType = EXECUTE_REQUEST;
         mMiddlewares = new ArrayList<>();
     }
@@ -37,12 +45,12 @@ public class HBWorkflowManager implements Workflow, WFNext {
     }
 
     @Override
-    public void execute(@NonNull Map reports) {
-        execute(reports, null, new NullFinishCallback());
+    public void execute(@NonNull AdsReport reports, Context context) {
+        execute(reports, context, new NullFinishCallback());
     }
 
     @Override
-    public void execute(@NonNull Map reports, Map context, FinishCallback callback) {
+    public void execute(@NonNull AdsReport reports, Context context, FinishCallback callback) {
         mSize = mMiddlewares.size();
         if (mSize == 0) {
             return;

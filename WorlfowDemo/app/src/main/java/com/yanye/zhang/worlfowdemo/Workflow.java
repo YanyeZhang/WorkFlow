@@ -1,5 +1,7 @@
 package com.yanye.zhang.worlfowdemo;
 
+import android.content.Context;
+
 import java.util.Map;
 
 /**
@@ -8,7 +10,7 @@ import java.util.Map;
  * design from  https://my.oschina.net/qiaotoubao/blog/735675?utm_source=tuicool&utm_medium=referral
  */
 
-public interface Workflow {
+public interface Workflow<T> {
 
     /**
      * add the middleware into workflow
@@ -22,13 +24,13 @@ public interface Workflow {
      *
      * @param reports
      */
-    void execute(Map reports);
+    void execute(T reports, Context context);
 
     /**
      * @param reports  the data that need to report
      * @param context  the data that work for workflow
      * @param callback
      */
-    void execute(Map reports, Map context, FinishCallback callback);
+    void execute(T reports, Context context, FinishCallback callback);
 
 }

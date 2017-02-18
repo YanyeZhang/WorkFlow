@@ -1,4 +1,7 @@
-package com.yanye.zhang.worlfowdemo;
+package com.yanye.zhang.worlfowdemo.ads;
+
+import com.yanye.zhang.worlfowdemo.WorkFlowFactory;
+import com.yanye.zhang.worlfowdemo.Workflow;
 
 /**
  * Created by zhangyanye on 2017/2/17.
@@ -9,7 +12,7 @@ public class AdsFactory implements WorkFlowFactory {
 
     @Override
     public Workflow createWorkfolw() {
-        return new HBWorkflowManager()
+        return new AdsWorkflowManager()
                 .use(new TestMiddleware());
     }
 }

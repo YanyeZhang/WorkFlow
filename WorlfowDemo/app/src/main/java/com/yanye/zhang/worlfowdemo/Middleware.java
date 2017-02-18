@@ -1,5 +1,7 @@
 package com.yanye.zhang.worlfowdemo;
 
+import android.content.Context;
+
 import java.util.Map;
 
 /**
@@ -7,7 +9,7 @@ import java.util.Map;
  * Description: 中间件，只负责本模块内的工作
  */
 
-public interface Middleware {
+public interface Middleware<T>{
 
     /**
      * handle the request params
@@ -16,7 +18,7 @@ public interface Middleware {
      * @param context
      * @param next
      */
-    void handleRequest(Map reports, Map context, WFNext next);
+    void handleRequest(T reports, Context context, WFNext next);
 
     /**
      * handle the reponse params
@@ -25,5 +27,5 @@ public interface Middleware {
      * @param context
      * @param next
      */
-    void handleReponse(Map reports, Map context, WFNext next);
+    void handleReponse(T reports, Context context, WFNext next);
 }
