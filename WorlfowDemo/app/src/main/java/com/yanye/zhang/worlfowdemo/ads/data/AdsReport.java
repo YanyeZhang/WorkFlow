@@ -10,4 +10,9 @@ public class AdsReport {
     public DeviceInfo common;
 
     public ReportEvent event;
+
+    public AdsReport(ReportEvent event, DeviceInfo common) {
+        this.common = common;
+        this.event = event;
+    }
 }
